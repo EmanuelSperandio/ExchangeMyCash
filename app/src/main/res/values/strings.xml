@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ExchangeMyCash</string>
+    <string name="add_start_Value">Add start value</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+
+    <string-array name="currencies">
+        <item>"Australian Dollar"</item>
+        <item>"Real"</item>
+        <item>"Canadian Dollar"</item>
+        <item>"Swiss Franc"</item>
+        <item>"人民币"</item>
+        <item>"Euro"</item>
+        <item>"Pound Sterling"</item>
+        <item>"港幣"</item>
+        <item>"円"</item>
+        <item>"New Zealand Dollar"</item>
+        <item>"United States Dollar"</item>
+    </string-array>
+
+    <string-array name="currenciesAndNames">
+        <item>"AUD - "</item>
+        <item>"BRL - "</item>
+        <item>"CAD - "</item>
+        <item>"CHF - "</item>
+        <item>"CNY - "</item>
+        <item>"EUR - "</item>
+        <item>"GBP - "</item>
+        <item>"HKD - "</item>
+        <item>"JPY - "</item>
+        <item>"NZD - "</item>
+        <item>"USD - "</item>
+    </string-array>
+
+</resources>
