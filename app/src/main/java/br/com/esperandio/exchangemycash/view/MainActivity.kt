@@ -1,6 +1,5 @@
-package br.com.esperandio.exchangemycash
+package br.com.esperandio.exchangemycash.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,10 +10,11 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.widget.doOnTextChanged
+import br.com.esperandio.exchangemycash.R
+import br.com.esperandio.exchangemycash.model.RatesData
 import br.com.esperandio.exchangemycash.viewmodel.MainViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.math.RoundingMode
 
 lateinit var tvResultMoney : TextView
 lateinit var etStartMoney : EditText
@@ -41,11 +41,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener  {
         spinnerMarketRate = findViewById(R.id.spinner_MarketRate)
 
         buttonShare.setOnClickListener {
-            share()
+            startActivity(viewModel.share())
         }
 
         GlobalScope.launch {
-            apiResult = RetrofitInstance.api.getRates()
+
+            apiResult = viewModel.getApiResult()
 
             spinnerFrom.onItemSelectedListener = this@MainActivity
             spinnerTo.onItemSelectedListener = this@MainActivity
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener  {
                     "2.0% market rate" ->{marketRate = 0.98}
                 }
 
-                result(fromValue,toValue, marketRate)
+                tvResultMoney.text = viewModel.result(fromValue,toValue, marketRate)
 
             }
         }
@@ -142,7 +143,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener  {
             "2.0% market rate" ->{marketRate = 0.98}
         }
 
-        result(fromValue,toValue, marketRate)
+        tvResultMoney.text = viewModel.result(fromValue,toValue, marketRate)
 
     }
 
@@ -150,32 +151,5 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener  {
         tvResultMoney.text = "0.0"
     }
 
-    private fun result(fromValue: Double, toValue : Double, marketRate : Double){
-        if(etStartMoney.text.isNullOrBlank() || etStartMoney.text.isEmpty()) {
-            tvResultMoney.text = "0.0"
-        }else{
-            var totalFinal = calc(fromValue, toValue,etStartMoney.text.toString().toDouble())?.times(marketRate)
-            var df = totalFinal?.toBigDecimal()?.setScale(2, RoundingMode.HALF_EVEN)
-            tvResultMoney.text = df.toString()
-        }
-    }
-
-    private fun calc(fromValue : Double, toValue : Double, startValue : Double) : Double? {
-        var finalValue = 0.0
-        if(!fromValue.equals(0.0)){
-            finalValue = (startValue * toValue) / fromValue
-        }
-        return finalValue
-    }
-
-    private fun share(){
-
-        var intent = Intent().apply {
-            this.action = Intent.ACTION_SEND
-            this.putExtra(Intent.EXTRA_TEXT, etStartMoney.text.toString() + " " +  spinnerFrom.selectedItem.toString() +  " = "+ tvResultMoney.text.toString() + " " + spinnerTo.selectedItem.toString())
-            this.type = "text/plain"
-        }
-        startActivity(intent)
-    }
 
 }

@@ -1,4 +1,4 @@
-package br.com.esperandio.exchangemycash
+package br.com.esperandio.exchangemycash.model
 
 import retrofit2.http.GET
 
