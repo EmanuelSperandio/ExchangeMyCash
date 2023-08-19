@@ -3,6 +3,8 @@
     <string name="add_start_Value">Add start value</string>
     <string name="from">From:</string>
     <string name="to">To:</string>
+    <string name="marketrate">Market Rate</string>
+    <string name="share">SHARE  </string>
 
     <string-array name="currencies">
         <item>"Australian Dollar"</item>
@@ -30,6 +32,14 @@
         <item>"JPY - "</item>
         <item>"NZD - "</item>
         <item>"USD - "</item>
+    </string-array>
+
+    <string-array name="marketrate">
+        <item>"0.0% market rate"</item>
+        <item>"0.5% market rate"</item>
+        <item>"1.0% market rate"</item>
+        <item>"1.5% market rate"</item>
+        <item>"2.0% market rate"</item>
     </string-array>
 
 </resources>

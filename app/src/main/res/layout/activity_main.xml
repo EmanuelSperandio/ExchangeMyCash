@@ -147,22 +147,49 @@
             android:textSize="18dp"
             tools:text="250.5055" />
 
+        <TextView
+            android:id="@+id/tv_MarketRates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:text="@string/marketrate"
+            android:textColor="@color/lightgrey"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spinner_MarketRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_grey_bg"
+            android:entries="@array/marketrate"
+            android:padding="8dp"
+            android:spinnerMode="dialog"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/ibShare"
+        style="@style/Widget.MaterialComponents.Button"
+        android:theme="@style/Widget.AppCompat.Button"
+        android:id="@+id/bShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivWhiteBackground"
-        android:text="Share   "
-        android:textColor="@color/white"
+        android:text="@string/share"
         android:drawableRight="@drawable/baseline_share_24"
+        android:padding="15dp"
+        android:textColor="@color/white"
         android:background="@drawable/corner_orange_bg"
-        android:padding="22dp"
+        android:textSize="18sp"
+        app:backgroundTint="@color/orange"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
